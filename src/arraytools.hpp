@@ -21,6 +21,14 @@ namespace arraytools
     for (size_t i=0; i<len; i++)
       dst[i] = (DST) src[i];
   }
+  
+  
+  
+  template <typename T>
+  static inline void zero(const size_t len, T *x)
+  {
+    std::memset(x, 0, len*sizeof(*x));
+  }
 }
 
 
