@@ -50,10 +50,79 @@ namespace arraytools
   
   
   template <typename T>
+  static inline void realloc(const size_t len, T **x)
+  {
+    void *realloc_ptr = std::realloc(*x, len*sizeof(T));
+    if (realloc_ptr == NULL)
+      std::free(*x);
+    
+    *x = (T*) realloc_ptr;
+  }
+  
+  
+  
+  template <typename T>
   static inline void free(T *x)
   {
     if (x)
       std::free(x);
+  }
+  
+  
+  
+  namespace
+  {
+    static const int ALLOC_FAILED = -1;
+    static const int ALLOC_OK = 0;
+    
+    template <typename T>
+    static inline int check_alloc(T *x)
+    {
+      if (x == NULL)
+        return ALLOC_FAILED;
+      else
+        return ALLOC_OK;
+    }
+    
+    template <typename T, typename S>
+    static inline int check_alloc(T *x, S *y)
+    {
+      return arraytools::check_alloc(x) + arraytools::check_alloc(y);
+    }
+    
+    template <typename T, typename S>
+    static inline void free(T *x, S *y)
+    {
+      arraytools::free(x);
+      arraytools::free(y);
+    }
+  }
+  
+  template <typename T>
+  static inline void check_allocs(T *x)
+  {
+    int check = check_alloc(x);
+    
+    if (check != ALLOC_OK)
+    {
+      arraytools::free(x);
+      
+      throw std::bad_alloc();
+    }
+  }
+  
+  template <typename T, typename... VAT>
+  static inline void check_allocs(T *x, VAT... vax)
+  {
+    int check = check_alloc(x) + check_alloc(vax...);
+    
+    if (check != ALLOC_OK)
+    {
+      arraytools::free(x);
+      free(vax...);
+      
+      throw std::bad_alloc();
+    }
   }
 }
 
