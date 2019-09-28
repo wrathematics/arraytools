@@ -29,6 +29,22 @@ namespace arraytools
   {
     std::memset(x, 0, len*sizeof(*x));
   }
+  
+  
+  
+  template <typename T>
+  static inline void alloc(const size_t len, T **x)
+  {
+    *x = (T*) std::malloc(len*sizeof(T));
+  }
+  
+  
+  
+  template <typename T>
+  static inline void zero_alloc(const size_t len, T **x)
+  {
+    *x = (T*) std::calloc(len, sizeof(T));
+  }
 }
 
 
