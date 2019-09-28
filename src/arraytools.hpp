@@ -4,6 +4,7 @@
 
 #include <cstdlib>
 #include <cstring>
+#include <stdexcept>
 
 
 namespace arraytools
@@ -44,6 +45,15 @@ namespace arraytools
   static inline void zero_alloc(const size_t len, T **x)
   {
     *x = (T*) std::calloc(len, sizeof(T));
+  }
+  
+  
+  
+  template <typename T>
+  static inline void free(T *x)
+  {
+    if (x)
+      std::free(x);
   }
 }
 
