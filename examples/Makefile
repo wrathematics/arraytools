@@ -6,7 +6,7 @@ OMPFLAGS = -fopenmp
 WARNFLAGS = -Wall -pedantic -Wextra
 
 
-all: clean arraytools spmat spvec
+all: clean arraytools
 
 arraytools: $(OBJS)
 	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(WARNFLAGS) $(OMPFLAGS) arraytools.cpp -o arraytools
