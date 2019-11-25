@@ -80,6 +80,13 @@ namespace arraytools
     static const int ALLOC_FAILED = -1;
     static const int ALLOC_OK = 0;
     
+    
+    
+    static inline int check_alloc()
+    {
+      return ALLOC_OK;
+    }
+    
     template <typename T>
     static inline int check_alloc(T *x)
     {
@@ -89,42 +96,35 @@ namespace arraytools
         return ALLOC_OK;
     }
     
-    template <typename T, typename S>
-    static inline int check_alloc(T *x, S *y)
+    template <typename T, typename... VAT>
+    static inline int check_alloc(T *x, VAT... vax)
     {
-      return arraytools::check_alloc(x) + arraytools::check_alloc(y);
+      return check_alloc(x) + check_alloc(vax ...);
     }
     
-    template <typename T, typename S>
-    static inline void free(T *x, S *y)
+    
+    
+    static inline void vafree(){}
+    
+    template <typename T, typename... VAT>
+    static inline void vafree(T *x, VAT... vax)
     {
       arraytools::free(x);
-      arraytools::free(y);
+      vafree(vax ...);
     }
   }
   
-  template <typename T>
-  static inline void check_allocs(T *x)
-  {
-    int check = check_alloc(x);
-    
-    if (check != ALLOC_OK)
-    {
-      arraytools::free(x);
-      
-      throw std::bad_alloc();
-    }
-  }
+  
   
   template <typename T, typename... VAT>
   static inline void check_allocs(T *x, VAT... vax)
   {
-    int check = check_alloc(x) + check_alloc(vax...);
+    int check = check_alloc(x) + check_alloc(vax ...);
     
     if (check != ALLOC_OK)
     {
       arraytools::free(x);
-      free(vax...);
+      vafree(vax ...);
       
       throw std::bad_alloc();
     }
