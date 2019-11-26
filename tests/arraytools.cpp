@@ -3,29 +3,28 @@
 #include <arraytools.hpp>
 
 
-TEMPLATE_TEST_CASE("basics", "", char, int, double)
-{
-  const int len = 3;
-  
-  TestType *a, *b;
-  arraytools::alloc(len, &a);
-  arraytools::alloc(len, &b);
-  
-  REQUIRE_NOTHROW( arraytools::check_allocs(a, b) );
-  
-  TestType *c = NULL;
-  REQUIRE_THROWS_AS( arraytools::check_allocs(a, b, c), std::bad_alloc );
-}
-
-
-
-TEMPLATE_TEST_CASE("x", "", char, int, double)
+TEMPLATE_TEST_CASE("alloc", "[arraytools]", char, int, double)
 {
   const int len = 3;
   
   TestType *x;
   arraytools::zero_alloc(len, &x);
   
+  REQUIRE_NOTHROW( arraytools::check_allocs(x) );
+  
+  arraytools::free(x);
+}
+
+
+
+TEMPLATE_TEST_CASE("zero_alloc", "[arraytools]", char, int, double)
+{
+  const int len = 3;
+  
+  TestType *x;
+  arraytools::zero_alloc(len, &x);
+  
+  REQUIRE_NOTHROW( arraytools::check_allocs(x) );
   REQUIRE( x[0] == 0 );
   
   arraytools::free(x);
@@ -33,18 +32,42 @@ TEMPLATE_TEST_CASE("x", "", char, int, double)
 
 
 
-TEMPLATE_TEST_CASE("realloc", "", char, int, double)
+TEMPLATE_TEST_CASE("check_allocs", "[arraytools]", char, int, double)
+{
+  const int len = 3;
+  
+  TestType *a, *b, *c;
+  arraytools::alloc(len, &a);
+  arraytools::alloc(len, &b);
+  arraytools::alloc(len, &c);
+  
+  REQUIRE_NOTHROW( arraytools::check_allocs(a) );
+  REQUIRE_NOTHROW( arraytools::check_allocs(a, b) );
+  REQUIRE_NOTHROW( arraytools::check_allocs(a, b, c) );
+  
+  TestType *d = NULL;
+  REQUIRE_THROWS_AS( arraytools::check_allocs(a, b, c, d), std::bad_alloc );
+  // NOTE check_allocs() throwing here will automatically call free() on a, b, c
+}
+
+
+
+TEMPLATE_TEST_CASE("realloc", "[arraytools]", char, int, double)
 {
   int len = 2;
   
   TestType *x;
   arraytools::zero_alloc(len, &x);
   
+  REQUIRE_NOTHROW( arraytools::check_allocs(x) );
+  
   len = 3;
   arraytools::realloc(len, &x);
-  arraytools::zero(len, x);
+  REQUIRE_NOTHROW( arraytools::check_allocs(x) );
   
+  arraytools::zero(len, x);
   REQUIRE( x[len-1] == 0 );
+  
   x[len-1] = 1;
   REQUIRE( x[len-1] == 1);
   
@@ -60,18 +83,23 @@ struct TypeRecoverer
   S y;
 };
 
-TEMPLATE_PRODUCT_TEST_CASE("asdf", "",
-  TypeRecoverer, ((int, char), (float, int), (double, double)))
+TEMPLATE_PRODUCT_TEST_CASE("copy", "[arraytools]",
+  TypeRecoverer, (
+    (char, char), (int, int), (double, double),
+    (char, int), (int, char), (int, double), (double, int)
+  )
+)
 {
   TestType a;
   using T = decltype(+a.x);
   using S = decltype(+a.y);
   
-  const int len = 5;
+  const int len = 3;
   T *x;
   S *y;
   arraytools::alloc(len, &x);
   arraytools::alloc(len, &y);
+  REQUIRE_NOTHROW( arraytools::check_allocs(x, y) );
   
   for (int i=0; i<len; i++)
     x[i] = (T) i;
