@@ -19,3 +19,75 @@ There are some minor improvements as well. First, all length arguments are "numb
 There are no external dependencies. Tests use [catch2](https://github.com/catchorg/Catch2), a copy of which is included under `tests/catch`.
 
 To build the tests, modify `tests/make.inc` as appropriate and type `make`.
+
+
+
+## API
+
+```C++
+/** 
+ * Copy one array onto another. Array types can differ. If they are the same, it
+ * reduces to a memcpy() call.
+ * 
+ * @param[in] len Number of elements (not the number of bytes!).
+ * @param[in] src Source array.
+ * @param[out] dst Destination array.
+ */
+template <typename SRC, typename DST>
+void copy(const size_t len, const SRC *src, DST *dst)
+
+/**
+ * Set an array's values to 0. Wrapper around memset().
+ * 
+ * @param[in] len Number of elements (not the number of bytes!).
+ * @param[inout] x Array to be zeroed.
+ */
+template <typename T>
+void zero(const size_t len, T *x)
+
+/**
+ * Allocate an array. Wrapper around malloc().
+ * 
+ * @param[in] len Number of elements (not the number of bytes!).
+ * @param[out] x Array to be allocated.
+ */
+template <typename T>
+void alloc(const size_t len, T **x)
+
+/**
+ * Zero-allocate an array. Wrapper around calloc().
+ * 
+ * @param[in] len Number of elements (not the number of bytes!).
+ * @param[out] x Array to be allocated.
+ */
+template <typename T>
+void zero_alloc(const size_t len, T **x)
+
+/**
+ * Re-allocate an array. Wrapper around realloc(). If the realloc fails, the
+ * pointer will be set to NULL.
+ * 
+ * @param[in] len Number of elements (not the number of bytes!).
+ * @param[out] x Array to be re-allocated.
+ */
+template <typename T>
+void realloc(const size_t len, T **x)
+
+/**
+ * Free an array if supplied pointer is not NULL. Wrapper around free().
+ * 
+ * @param[in] x Array to be allocated.
+ */
+template <typename T>
+void free(T *x)
+
+/**
+ * Check variable number of arrays. If one is NULL, then all others will be
+ * automatically freed and std::bad_alloc() will be thrown.
+ * 
+ * @param[in] x Array.
+ * @param[in] vax Optional more arrays.
+ */
+template <typename T, typename... VAT>
+void check_allocs(T *x, VAT... vax)
+```
