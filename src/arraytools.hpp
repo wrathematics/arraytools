@@ -14,6 +14,14 @@
 
 namespace arraytools
 {
+  /** 
+   * Copy one array onto another. Array types can differ. If they are the same, it
+   * reduces to a memcpy() call.
+   * 
+   * @param[in] len Number of elements (not the number of bytes!).
+   * @param[in] src Source array.
+   * @param[out] dst Destination array.
+   */
   template <typename T>
   static inline void copy(const size_t len, const T *src, T *dst)
   {
@@ -30,6 +38,12 @@ namespace arraytools
   
   
   
+  /**
+   * Set an array's values to 0. Wrapper around memset().
+   * 
+   * @param[in] len Number of elements (not the number of bytes!).
+   * @param[inout] x Array to be zeroed.
+   */
   template <typename T>
   static inline void zero(const size_t len, T *x)
   {
@@ -38,6 +52,12 @@ namespace arraytools
   
   
   
+  /**
+   * Allocate an array. Wrapper around malloc().
+   * 
+   * @param[in] len Number of elements (not the number of bytes!).
+   * @param[out] x Array to be allocated.
+   */
   template <typename T>
   static inline void alloc(const size_t len, T **x)
   {
@@ -46,6 +66,12 @@ namespace arraytools
   
   
   
+  /**
+   * Zero-allocate an array. Wrapper around calloc.
+   * 
+   * @param[in] len Number of elements (not the number of bytes!).
+   * @param[out] x Array to be allocated.
+   */
   template <typename T>
   static inline void zero_alloc(const size_t len, T **x)
   {
@@ -54,6 +80,13 @@ namespace arraytools
   
   
   
+  /**
+   * Re-allocate an array. Wrapper around realloc(). If the realloc fails, the
+   * array will be set to NULL.
+   * 
+   * @param[in] len Number of elements (not the number of bytes!).
+   * @param[out] x Array to be re-allocated.
+   */
   template <typename T>
   static inline void realloc(const size_t len, T **x)
   {
@@ -66,6 +99,11 @@ namespace arraytools
   
   
   
+  /**
+   * Free an array if supplied pointer is not NULL. Wrapper around free().
+   * 
+   * @param[in] x Array to be allocated.
+   */
   template <typename T>
   static inline void free(T *x)
   {
@@ -116,6 +154,13 @@ namespace arraytools
   
   
   
+  /**
+   * Check variable number of arrays. If one is NULL, then all others will be
+   * automatically freed and std::bad_alloc() will be thrown.
+   * 
+   * @param[in] x Array.
+   * @param[in] vax Optional more arrays.
+   */
   template <typename T, typename... VAT>
   static inline void check_allocs(T *x, VAT... vax)
   {
