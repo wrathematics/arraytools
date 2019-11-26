@@ -174,6 +174,48 @@ namespace arraytools
       throw std::bad_alloc();
     }
   }
+  
+  
+  
+  /** 
+   * Do the two arrays contain the same elements (up to a cast)? Not suitable
+   * for floats.
+   * 
+   * @param[in] len Number of elements (not the number of bytes!).
+   * @param[in] a,b The arrays.
+   * @return The index of the first mismatch, or len if there is no mismatch.
+   */
+  template <typename TA, typename TB>
+  static inline size_t cmp_firstmiss(const size_t len, const TA *a, const TB *b)
+  {
+    size_t ret = len;
+    
+    #pragma omp simd reduction(min:ret)
+    for (size_t i=0; i<len; i++)
+    {
+      if (a[i] != (TA)b[i])
+        ret = i;
+    }
+    
+    return ret;
+  }
+  
+  
+  
+  /** 
+   * Do the two arrays contain the same elements (up to a cast)? Not suitable
+   * for floats.
+   * 
+   * @param[in] len Number of elements (not the number of bytes!).
+   * @param[in] a,b The arrays.
+   * @return 'true' if the elements are the same and 'false' otherwise.
+   */
+  template <typename TA, typename TB>
+  static inline bool cmp(const size_t len, const TA *a, const TB *b)
+  {
+    size_t fm = cmp_firstmiss(len, a, b);
+    return (fm == len ? true : false);
+  }
 }
 
 
