@@ -1,6 +1,7 @@
 # arraytools
 
 * **Version:** 0.1-0
+* **Status:** [![Build Status](https://travis-ci.org/wrathematics/arraytools.png)](https://travis-ci.org/wrathematics/arraytools)
 * **License:** [BSL-1.0](http://opensource.org/licenses/BSL-1.0)
 * **Project home**: https://github.com/wrathematics/arraytools
 * **Bug reports**: https://github.com/wrathematics/arraytools/issues
