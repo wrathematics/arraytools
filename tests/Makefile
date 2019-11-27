@@ -1,7 +1,7 @@
 -include make.inc
 
 CPPFLAGS = -I../src
-CXXFLAGS = -std=c++11 -O2 -march=native
+CXXFLAGS = -std=c++17 -O2 -march=native
 OMPFLAGS = -fopenmp 
 WARNFLAGS = -Wall -pedantic -Wextra
 
