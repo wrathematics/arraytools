@@ -91,3 +91,25 @@ void free(T *x)
 template <typename T, typename... VAT>
 void check_allocs(T *x, VAT... vax)
 ```
+
+
+
+## Examples
+
+There are some examples in `examples/`, and more example usage in `tests/`. But for the sake of readme-completion, here's a simple example:
+
+```c++
+int *a, *b;
+arraytools::alloc(2, &a);
+arraytools::alloc(2, &b);
+
+arraytools::check_allocs(a);
+arraytools::check_allocs(a, b);
+
+arraytools::zero(2, a);
+
+
+// Will automatically free a and b and then throw std::badalloc()
+TestType *c = NULL;
+arraytools::check_allocs(a, b, c);
+```
