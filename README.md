@@ -25,26 +25,6 @@ To build the tests, modify `tests/make.inc` as appropriate and type `make`.
 ## API
 
 ```C++
-/** 
- * Copy one array onto another. Array types can differ. If they are the same, it
- * reduces to a memcpy() call.
- * 
- * @param[in] len Number of elements (not the number of bytes!).
- * @param[in] src Source array.
- * @param[out] dst Destination array.
- */
-template <typename SRC, typename DST>
-void copy(const size_t len, const SRC *src, DST *dst)
-
-/**
- * Set an array's values to 0. Wrapper around memset().
- * 
- * @param[in] len Number of elements (not the number of bytes!).
- * @param[inout] x Array to be zeroed.
- */
-template <typename T>
-void zero(const size_t len, T *x)
-
 /**
  * Allocate an array. Wrapper around malloc().
  * 
@@ -80,6 +60,26 @@ void realloc(const size_t len, T **x)
  */
 template <typename T>
 void free(T *x)
+
+/** 
+ * Copy one array onto another. Array types can differ. If they are the same, it
+ * reduces to a memcpy() call.
+ * 
+ * @param[in] len Number of elements (not the number of bytes!).
+ * @param[in] src Source array.
+ * @param[out] dst Destination array.
+ */
+template <typename SRC, typename DST>
+void copy(const size_t len, const SRC *src, DST *dst)
+
+/**
+ * Set an array's values to 0. Wrapper around memset().
+ * 
+ * @param[in] len Number of elements (not the number of bytes!).
+ * @param[inout] x Array to be zeroed.
+ */
+template <typename T>
+void zero(const size_t len, T *x)
 
 /**
  * Check variable number of arrays. If one is NULL, then all others will be

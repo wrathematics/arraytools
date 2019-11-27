@@ -21,44 +21,6 @@
 
 namespace arraytools
 {
-  /** 
-   * Copy one array onto another. Array types can differ. If they are the same, it
-   * reduces to a memcpy() call.
-   * 
-   * @param[in] len Number of elements (not the number of bytes!).
-   * @param[in] src Source array.
-   * @param[out] dst Destination array.
-   */
-  template <typename T>
-  static inline void copy(const size_t len, const T *src, T *dst)
-  {
-    std::memcpy(dst, src, len*sizeof(*src));
-  }
-  
-  template <typename SRC, typename DST>
-  static inline void copy(const size_t len, const SRC *src, DST *dst)
-  {
-    #pragma omp for simd
-    for (size_t i=0; i<len; i++)
-      dst[i] = (DST) src[i];
-  }
-  
-  
-  
-  /**
-   * Set an array's values to 0. Wrapper around memset().
-   * 
-   * @param[in] len Number of elements (not the number of bytes!).
-   * @param[inout] x Array to be zeroed.
-   */
-  template <typename T>
-  static inline void zero(const size_t len, T *x)
-  {
-    std::memset(x, 0, len*sizeof(*x));
-  }
-  
-  
-  
   /**
    * Allocate an array. Wrapper around malloc().
    * 
@@ -116,6 +78,44 @@ namespace arraytools
   {
     if (x)
       std::free(x);
+  }
+  
+  
+  
+  /** 
+   * Copy one array onto another. Array types can differ. If they are the same, it
+   * reduces to a memcpy() call.
+   * 
+   * @param[in] len Number of elements (not the number of bytes!).
+   * @param[in] src Source array.
+   * @param[out] dst Destination array.
+   */
+  template <typename T>
+  static inline void copy(const size_t len, const T *src, T *dst)
+  {
+    std::memcpy(dst, src, len*sizeof(*src));
+  }
+  
+  template <typename SRC, typename DST>
+  static inline void copy(const size_t len, const SRC *src, DST *dst)
+  {
+    #pragma omp for simd
+    for (size_t i=0; i<len; i++)
+      dst[i] = (DST) src[i];
+  }
+  
+  
+  
+  /**
+   * Set an array's values to 0. Wrapper around memset().
+   * 
+   * @param[in] len Number of elements (not the number of bytes!).
+   * @param[inout] x Array to be zeroed.
+   */
+  template <typename T>
+  static inline void zero(const size_t len, T *x)
+  {
+    std::memset(x, 0, len*sizeof(*x));
   }
   
   
