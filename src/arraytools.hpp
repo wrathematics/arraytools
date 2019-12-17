@@ -33,6 +33,14 @@ namespace arraytools
     *x = (T*) std::malloc(len*sizeof(T));
   }
   
+  /// \overload
+  template <typename T>
+  static inline void alloc(const size_t nrows, const size_t ncols, T **x)
+  {
+    const size_t len = nrows * ncols;
+    alloc(len, x);
+  }
+  
   
   
   /**
@@ -45,6 +53,13 @@ namespace arraytools
   static inline void zero_alloc(const size_t len, T **x)
   {
     *x = (T*) std::calloc(len, sizeof(T));
+  }
+  
+  template <typename T>
+  static inline void zero_alloc(const size_t nrows, const size_t ncols, T **x)
+  {
+    const size_t len = nrows * ncols;
+    zero_alloc(len, x);
   }
   
   
@@ -64,6 +79,14 @@ namespace arraytools
       std::free(*x);
     
     *x = (T*) realloc_ptr;
+  }
+  
+  /// \overload
+  template <typename T>
+  static inline void realloc(const size_t nrows, const size_t ncols, T **x)
+  {
+    const size_t len = nrows * ncols;
+    realloc(len, x);
   }
   
   
@@ -96,12 +119,29 @@ namespace arraytools
     std::memcpy(dst, src, len*sizeof(*src));
   }
   
+  /// \overload
+  template <typename T>
+  static inline void copy(const size_t nrows, const size_t ncols, const T *src, T *dst)
+  {
+    const size_t len = nrows * ncols;
+    copy(len, src, dst);
+  }
+  
+  /// \overload
   template <typename SRC, typename DST>
   static inline void copy(const size_t len, const SRC *src, DST *dst)
   {
     #pragma omp for simd
     for (size_t i=0; i<len; i++)
       dst[i] = (DST) src[i];
+  }
+
+  /// \overload
+  template <typename SRC, typename DST>
+  static inline void copy(const size_t nrows, const size_t ncols, const SRC *src, DST *dst)
+  {
+    const size_t len = nrows * ncols;
+    copy(len, src, dst);
   }
   
   
@@ -116,6 +156,14 @@ namespace arraytools
   static inline void zero(const size_t len, T *x)
   {
     std::memset(x, 0, len*sizeof(*x));
+  }
+  
+  /// \overload
+  template <typename T>
+  static inline void zero(const size_t nrows, const size_t ncols, T *x)
+  {
+    const size_t len = nrows * ncols;
+    zero(len, x);
   }
   
   
