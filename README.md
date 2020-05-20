@@ -99,7 +99,7 @@ void check_allocs(T *x, VAT... vax)
 
 There are some examples in `examples/`, and more example usage in `tests/`. But for the sake of readme-completion, here's a simple example:
 
-```c++
+```cpp
 int *a, *b;
 arraytools::alloc(2, &a);
 arraytools::alloc(2, &b);
