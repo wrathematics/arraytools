@@ -19,13 +19,14 @@
 #endif
 
 
+/// @brief Tools for working with arrays.
 namespace arraytools
 {
   /**
-   * Allocate an array. Wrapper around malloc().
-   * 
-   * @param[in] len Number of elements (not the number of bytes!).
-   * @param[out] x Array to be allocated.
+    Allocate an array. Wrapper around malloc().
+    
+    @param[in] len Number of elements (not the number of bytes!).
+    @param[out] x Array to be allocated.
    */
   template <typename T>
   static inline void alloc(const size_t len, T **x)
@@ -44,10 +45,10 @@ namespace arraytools
   
   
   /**
-   * Zero-allocate an array. Wrapper around calloc.
-   * 
-   * @param[in] len Number of elements (not the number of bytes!).
-   * @param[out] x Array to be allocated.
+    Zero-allocate an array. Wrapper around calloc.
+    
+    @param[in] len Number of elements (not the number of bytes!).
+    @param[out] x Array to be allocated.
    */
   template <typename T>
   static inline void zero_alloc(const size_t len, T **x)
@@ -65,11 +66,11 @@ namespace arraytools
   
   
   /**
-   * Re-allocate an array. Wrapper around realloc(). If the realloc fails, the
-   * array will be set to NULL.
-   * 
-   * @param[in] len Number of elements (not the number of bytes!).
-   * @param[out] x Array to be re-allocated.
+    Re-allocate an array. Wrapper around realloc(). If the realloc fails, the
+    array will be set to NULL.
+    
+    @param[in] len Number of elements (not the number of bytes!).
+    @param[out] x Array to be re-allocated.
    */
   template <typename T>
   static inline void realloc(const size_t len, T **x)
@@ -92,9 +93,9 @@ namespace arraytools
   
   
   /**
-   * Free an array if supplied pointer is not NULL. Wrapper around free().
-   * 
-   * @param[in] x Array to be allocated.
+    Free an array if supplied pointer is not NULL. Wrapper around free().
+    
+    @param[in] x Array to be allocated.
    */
   template <typename T>
   static inline void free(T *x)
@@ -106,12 +107,12 @@ namespace arraytools
   
   
   /** 
-   * Copy one array onto another. Array types can differ. If they are the same, it
-   * reduces to a memcpy() call.
-   * 
-   * @param[in] len Number of elements (not the number of bytes!).
-   * @param[in] src Source array.
-   * @param[out] dst Destination array.
+    Copy one array onto another. Array types can differ. If they are the same, it
+    reduces to a memcpy() call.
+    
+    @param[in] len Number of elements (not the number of bytes!).
+    @param[in] src Source array.
+    @param[out] dst Destination array.
    */
   template <typename T>
   static inline void copy(const size_t len, const T *src, T *dst)
@@ -147,10 +148,10 @@ namespace arraytools
   
   
   /**
-   * Set an array's values to 0. Wrapper around memset().
-   * 
-   * @param[in] len Number of elements (not the number of bytes!).
-   * @param[inout] x Array to be zeroed.
+    Set an array's values to 0. Wrapper around memset().
+    
+    @param[in] len Number of elements (not the number of bytes!).
+    @param[inout] x Array to be zeroed.
    */
   template <typename T>
   static inline void zero(const size_t len, T *x)
@@ -210,11 +211,11 @@ namespace arraytools
   
   
   /**
-   * Check variable number of arrays. If one is NULL, then all others will be
-   * automatically freed and std::bad_alloc() will be thrown.
-   * 
-   * @param[in] x Array.
-   * @param[in] vax Optional more arrays.
+    Check variable number of arrays. If one is NULL, then all others will be
+    automatically freed and std::bad_alloc() will be thrown.
+    
+    @param[in] x Array.
+    @param[in] vax Optional more arrays.
    */
   template <typename T, typename... VAT>
   static inline void check_allocs(T *x, VAT... vax)
@@ -369,12 +370,12 @@ namespace arraytools
   
   
   /** 
-   * Do the two arrays contain the same elements (up to a cast)? Not suitable
-   * for floats.
-   * 
-   * @param[in] len Number of elements (not the number of bytes!).
-   * @param[in] a,b The arrays.
-   * @return The index of the first mismatch, or len if there is no mismatch.
+    Do the two arrays contain the same elements (up to a cast)? Not suitable
+    for floats.
+    
+    @param[in] len Number of elements (not the number of bytes!).
+    @param[in] a,b The arrays.
+    @return The index of the first mismatch, or len if there is no mismatch.
    */
   template <typename TA, typename TB>
   static inline size_t cmp_firstmiss(const size_t len, const TA *a, const TB *b)
@@ -394,18 +395,25 @@ namespace arraytools
   
   
   /** 
-   * Do the two arrays contain the same elements (up to a cast)? Not suitable
-   * for floats.
-   * 
-   * @param[in] len Number of elements (not the number of bytes!).
-   * @param[in] a,b The arrays.
-   * @return 'true' if the elements are the same and 'false' otherwise.
+    Do the two numbers or arrays of numbers contain the same values (up to a
+    cast)?
+    
+    @param[in] len Number of elements (not the number of bytes!).
+    @param[in] a,b The arrays.
+    @return 'true' if the elements are the same and 'false' otherwise.
    */
   template <typename TA, typename TB>
   static inline bool cmp(const size_t len, const TA *a, const TB *b)
   {
     size_t fm = cmp_firstmiss(len, a, b);
     return (fm == len ? true : false);
+  }
+  
+  /// \overload
+  template <typename TA, typename TB>
+  static inline bool cmp(const TA a, const TB b)
+  {
+    return fltcmp::eq(a, b);
   }
 }
 
