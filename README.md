@@ -5,6 +5,7 @@
 * **License:** [BSL-1.0](http://opensource.org/licenses/BSL-1.0)
 * **Project home**: https://github.com/wrathematics/arraytools
 * **Bug reports**: https://github.com/wrathematics/arraytools/issues
+* **Documentation**: https://wrathematics.github.io/arraytools/html/index.html
 
 
 arraytools is a small, single file, header-only C++ 17 library that makes some minor improvements to working with dynamic arrays. It's very simple and permissively licensed, but you could probably re-create this yourself pretty easily. I'm only putting this here because I am using it across multiple projects. That said, if this looks interesting to you but there's some feature you want and it isn't hilariously out of scope (e.g. "re-implement std::vector"), then feel free to ask and I'll probably do it.
@@ -25,7 +26,7 @@ To build the tests, modify `tests/make.inc` as appropriate and type `make`.
 
 ## API
 
-```C++
+```cpp
 /**
  * Allocate an array. Wrapper around malloc().
  * 
