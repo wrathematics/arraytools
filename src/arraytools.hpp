@@ -44,6 +44,44 @@ namespace arraytools
   
   
   
+  namespace
+  {
+    static inline size_t get_alignment_len(const size_t bpl, const size_t alignment, const size_t len)
+    {
+      size_t al_len = len*bpl;
+      if (al_len%alignment != 0)
+        al_len = (al_len/alignment + 1) * alignment;
+      
+      return al_len;
+    }
+  }
+  
+  /**
+    Allocate an array. Wrapper around `std::aligned_alloc()`.
+    
+    @param[in] len Number of elements (not the number of bytes!).
+    @param[out] x Array to be allocated.
+   */
+  template <typename T>
+  static inline void aligned_alloc(const size_t alignment, const size_t len, T **x)
+  {
+    size_t al_len = get_alignment_len(sizeof(T), alignment, len);
+    *x = (T*) std::aligned_alloc(alignment, al_len);
+  }
+  
+  /// \overload
+  template <typename T>
+  static inline void aligned_alloc(const size_t alignment, const size_t nrows, const size_t ncols, T **x)
+  {
+    size_t al_len_rows = get_alignment_len(sizeof(T), alignment, nrows);
+    size_t al_len_cols = get_alignment_len(sizeof(T), alignment, ncols);
+    size_t al_len = al_len_rows + al_len_cols;
+    
+    *x = (T*) std::aligned_alloc(alignment, al_len);
+  }
+  
+  
+  
   /**
     Zero-allocate an array. Wrapper around `std::calloc()`.
     
