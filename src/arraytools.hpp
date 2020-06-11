@@ -23,7 +23,7 @@
 namespace arraytools
 {
   /**
-    Allocate an array. Wrapper around malloc().
+    Allocate an array. Wrapper around `std::malloc()`.
     
     @param[in] len Number of elements (not the number of bytes!).
     @param[out] x Array to be allocated.
@@ -45,7 +45,7 @@ namespace arraytools
   
   
   /**
-    Zero-allocate an array. Wrapper around calloc.
+    Zero-allocate an array. Wrapper around `std::calloc()`.
     
     @param[in] len Number of elements (not the number of bytes!).
     @param[out] x Array to be allocated.
@@ -56,6 +56,7 @@ namespace arraytools
     *x = (T*) std::calloc(len, sizeof(T));
   }
   
+  /// \overload
   template <typename T>
   static inline void zero_alloc(const size_t nrows, const size_t ncols, T **x)
   {
@@ -66,8 +67,8 @@ namespace arraytools
   
   
   /**
-    Re-allocate an array. Wrapper around realloc(). If the realloc fails, the
-    array will be set to NULL.
+    Re-allocate an array. Wrapper around `std::realloc()`. If the realloc fails,
+    the array will be set to `NULL`.
     
     @param[in] len Number of elements (not the number of bytes!).
     @param[out] x Array to be re-allocated.
@@ -93,7 +94,7 @@ namespace arraytools
   
   
   /**
-    Free an array if supplied pointer is not NULL. Wrapper around free().
+    Free an array if supplied pointer is not NULL. Wrapper around `std::free()`.
     
     @param[in] x Array to be allocated.
    */
@@ -108,7 +109,7 @@ namespace arraytools
   
   /** 
     Copy one array onto another. Array types can differ. If they are the same, it
-    reduces to a memcpy() call.
+    reduces to a `std::memcpy()` call.
     
     @param[in] len Number of elements (not the number of bytes!).
     @param[in] src Source array.
@@ -148,7 +149,7 @@ namespace arraytools
   
   
   /**
-    Set an array's values to 0. Wrapper around memset().
+    Set an array's values to 0. Wrapper around `std::memset()`.
     
     @param[in] len Number of elements (not the number of bytes!).
     @param[inout] x Array to be zeroed.
@@ -211,8 +212,8 @@ namespace arraytools
   
   
   /**
-    Check variable number of arrays. If one is NULL, then all others will be
-    automatically freed and std::bad_alloc() will be thrown.
+    Check variable number of arrays. If one is `NULL`, then all others will be
+    automatically freed and `std::bad_alloc()` will be thrown.
     
     @param[in] x Array.
     @param[in] vax Optional more arrays.
@@ -370,8 +371,7 @@ namespace arraytools
   
   
   /** 
-    Do the two arrays contain the same elements (up to a cast)? Not suitable
-    for floats.
+    Do the two arrays contain the same elements (up to a cast)?
     
     @param[in] len Number of elements (not the number of bytes!).
     @param[in] a,b The arrays.
