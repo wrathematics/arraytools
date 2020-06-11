@@ -304,6 +304,45 @@ namespace arraytools
   
   
   
+  namespace
+  {
+    static inline size_t lenprod()
+    {
+      return (size_t) 1;
+    }
+    
+    template <typename T>
+    static inline size_t lenprod(T x)
+    {
+      return (size_t) x;
+    }
+  }
+  
+  /**
+    Returns a product of lengths. Input types can be any integral type. Return
+    is always a `size_t`.
+    
+    @param[in] x A length.
+    @param[in] vax Optional additional length.
+    
+    @return The product of the inputs as a `size_t`.
+    
+    @code
+    float *x;
+    int nrows = 5;
+    int ncols = 3;
+    size_t xlen = arraytools::lenprod(nrows, ncols, sizeof(*x));
+    arraytools::alloc(xlen, &x);
+    @endcode
+   */
+  template <typename T, typename... VAT>
+  static inline size_t lenprod(T x, VAT... vax)
+  {
+    return (size_t) (((size_t)x) * lenprod(vax ...));
+  }
+  
+  
+  
   namespace fltcmp
   {
     namespace
