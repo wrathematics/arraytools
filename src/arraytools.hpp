@@ -208,6 +208,38 @@ namespace arraytools
   
   
   
+  
+  /**
+    Set an array's values to the specified value. If `val` is 0, this
+    automatically calls `std::memset()`.
+    
+    @param[in] val The value to set all elements of the array to.
+    @param[in] len Number of elements (not the number of bytes!).
+    @param[inout] x Array to be zeroed.
+   */
+  template <typename VALT, typename T>
+  static inline void set(const VALT val, const size_t len, T *x)
+  {
+    if (val == 0)
+      zero(len, x);
+    else
+    {
+      #pragma omp for simd
+      for (size_t i=0; i<len; i++)
+        x[i] = (T) val;
+    }
+  }
+  
+  /// \overload
+  template <typename T>
+  static inline void set(const size_t val, const size_t nrows, const size_t ncols, T *x)
+  {
+    const size_t len = nrows * ncols;
+    set(val, len, x);
+  }
+  
+  
+  
   namespace
   {
     static const int ALLOC_FAILED = -1;
