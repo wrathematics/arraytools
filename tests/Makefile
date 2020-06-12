@@ -6,7 +6,7 @@ OMPFLAGS = -fopenmp
 WARNFLAGS = -Wall -pedantic -Wextra
 
 
-all: miniclean arraytools run
+all: arraytools run
 
 SRCS=$(wildcard *.cpp)
 OBJS=$(SRCS:.cpp=.o )

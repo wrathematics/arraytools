@@ -72,6 +72,7 @@ TEMPLATE_TEST_CASE("realloc", "[arraytools]", char, int, float, double)
 }
 
 
+
 TEMPLATE_TEST_CASE("check_allocs", "[arraytools]", char, int, float, double)
 {
   const int len = 3;
