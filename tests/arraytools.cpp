@@ -1,15 +1,7 @@
 #include "catch/catch.hpp"
 
 #include <arraytools.hpp>
-
-
-template <typename T, typename S>
-struct TypeRecoverer
-{
-  T x;
-  S y;
-};
-
+#include "type_recoverer.hpp"
 
 
 TEMPLATE_TEST_CASE("alloc", "[arraytools]", char, int, float, double)
