@@ -12,6 +12,22 @@ TEMPLATE_TEST_CASE("alloc", "[arraytools]", char, int, float, double)
   arraytools::zero_alloc(len, &x);
   
   REQUIRE_NOTHROW( arraytools::check_allocs(x) );
+  REQUIRE_NOTHROW( x[len-1] = (TestType)0 );
+  
+  arraytools::free(x);
+}
+
+
+
+TEMPLATE_TEST_CASE("aligned_alloc", "[arraytools]", char, int, float, double)
+{
+  const int len = 3;
+  
+  TestType *x;
+  arraytools::aligned_alloc(32, len, &x);
+  
+  REQUIRE_NOTHROW( arraytools::check_allocs(x) );
+  REQUIRE_NOTHROW( x[len-1] = (TestType)0 );
   
   arraytools::free(x);
 }
