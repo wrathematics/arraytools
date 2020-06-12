@@ -343,6 +343,9 @@ namespace arraytools
   
   
   
+  // ---------------------------------------------------------------------------
+  // comparisons
+  // ---------------------------------------------------------------------------
   namespace fltcmp
   {
     namespace
@@ -433,7 +436,7 @@ namespace arraytools
     
     // modified from https://floating-point-gui.de/errors/comparison/
     template <typename REAL>
-    static inline bool eq(const REAL x, const REAL y)
+    static inline bool eq_flt(const REAL x, const REAL y)
     {
       if (x == y)
         return true;
@@ -443,37 +446,58 @@ namespace arraytools
         return releq(x, y);
     }
     
-    
-    
-    static inline bool eq(const int x, const int y)
+    static inline bool eq(const float x, const float y)
     {
-      return (x == y);
+      return eq_flt(x, y);
     }
     
-    
-    
-    template <typename REAL>
-    static inline bool eq(const REAL x, const int y)
+    static inline bool eq(const double x, const double y)
     {
-      return eq(x, (REAL) y);
+      return eq_flt(x, y);
     }
-    
-    template <typename REAL>
-    static inline bool eq(const int x, const REAL y)
-    {
-      return eq((REAL) x, y);
-    }
-    
-    
     
     static inline bool eq(const float x, double y)
     {
-      return eq(x, (float) y);
+      return eq_flt(x, (float) y);
     }
     
     static inline bool eq(const double x, const float y)
     {
+      return eq_flt((float) x, y);
+    }
+    
+    
+    
+    template <typename T>
+    static inline bool eq(const float x, const T y)
+    {
+      return eq(x, (float) y);
+    }
+    
+    template <typename T>
+    static inline bool eq(const T x, const float y)
+    {
       return eq((float) x, y);
+    }
+    
+    template <typename T>
+    static inline bool eq(const double x, const T y)
+    {
+      return eq(x, (double) y);
+    }
+    
+    template <typename T>
+    static inline bool eq(const T x, const double y)
+    {
+      return eq((double) x, y);
+    }
+    
+    
+    
+    template <typename T>
+    static inline bool eq(const T x, const T y)
+    {
+      return (x == y);
     }
   }
   
