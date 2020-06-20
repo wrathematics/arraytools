@@ -44,6 +44,7 @@ namespace arraytools
   
   
   
+#if __cplusplus >= 201703L
   namespace
   {
     static inline size_t get_alignment_len(const size_t bpl, const size_t alignment, const size_t len)
@@ -101,6 +102,7 @@ namespace arraytools
     const size_t len = nrows * ncols;
     zero_alloc(len, x);
   }
+#endif
   
   
   
