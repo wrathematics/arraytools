@@ -110,13 +110,6 @@ template&lt;typename T &gt; </td></tr>
 <tr class="memitem:ac335ade810e20f5386c07cf976a37508"><td class="memTemplItemLeft" align="right" valign="top">static void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacearraytools.html#ac335ade810e20f5386c07cf976a37508">alloc</a> (const size_t nrows, const size_t ncols, T **x)</td></tr>
 <tr class="memdesc:ac335ade810e20f5386c07cf976a37508"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. <br /></td></tr>
 <tr class="separator:ac335ade810e20f5386c07cf976a37508"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a99e57aa59763cbabc8f8c682d12beeda"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a99e57aa59763cbabc8f8c682d12beeda"><td class="memTemplItemLeft" align="right" valign="top">static void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacearraytools.html#a99e57aa59763cbabc8f8c682d12beeda">zero_alloc</a> (const size_t len, T **x)</td></tr>
-<tr class="separator:a99e57aa59763cbabc8f8c682d12beeda"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a96a0823ede2125b419969e1de1511618"><td class="memTemplParams" colspan="2"><a id="a96a0823ede2125b419969e1de1511618"></a>
-template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a96a0823ede2125b419969e1de1511618"><td class="memTemplItemLeft" align="right" valign="top">static void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>zero_alloc</b> (const size_t nrows, const size_t ncols, T **x)</td></tr>
-<tr class="separator:a96a0823ede2125b419969e1de1511618"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6c7af39d39210eec8df7e40a51c784df"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a6c7af39d39210eec8df7e40a51c784df"><td class="memTemplItemLeft" align="right" valign="top">static void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacearraytools.html#a6c7af39d39210eec8df7e40a51c784df">realloc</a> (const size_t len, T **x)</td></tr>
 <tr class="separator:a6c7af39d39210eec8df7e40a51c784df"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -154,9 +147,20 @@ template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a57c166cdfe743d65ce4cfad893a926be"><td class="memTemplItemLeft" align="right" valign="top">static void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacearraytools.html#a57c166cdfe743d65ce4cfad893a926be">zero</a> (const size_t nrows, const size_t ncols, T *x)</td></tr>
 <tr class="memdesc:a57c166cdfe743d65ce4cfad893a926be"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. <br /></td></tr>
 <tr class="separator:a57c166cdfe743d65ce4cfad893a926be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28459fdec2ddfe08bc1d8b884142bc63"><td class="memTemplParams" colspan="2">template&lt;typename VALT , typename T &gt; </td></tr>
+<tr class="memitem:a28459fdec2ddfe08bc1d8b884142bc63"><td class="memTemplItemLeft" align="right" valign="top">static void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacearraytools.html#a28459fdec2ddfe08bc1d8b884142bc63">set</a> (const VALT val, const size_t len, T *x)</td></tr>
+<tr class="separator:a28459fdec2ddfe08bc1d8b884142bc63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada0cbfa28aa57fa5ddb50af49a1d85ae"><td class="memTemplParams" colspan="2"><a id="ada0cbfa28aa57fa5ddb50af49a1d85ae"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ada0cbfa28aa57fa5ddb50af49a1d85ae"><td class="memTemplItemLeft" align="right" valign="top">static void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacearraytools.html#ada0cbfa28aa57fa5ddb50af49a1d85ae">set</a> (const size_t val, const size_t nrows, const size_t ncols, T *x)</td></tr>
+<tr class="memdesc:ada0cbfa28aa57fa5ddb50af49a1d85ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. <br /></td></tr>
+<tr class="separator:ada0cbfa28aa57fa5ddb50af49a1d85ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c1185a40d13a279d833fed35006ef97"><td class="memTemplParams" colspan="2">template&lt;typename T , typename... VAT&gt; </td></tr>
 <tr class="memitem:a1c1185a40d13a279d833fed35006ef97"><td class="memTemplItemLeft" align="right" valign="top">static void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacearraytools.html#a1c1185a40d13a279d833fed35006ef97">check_allocs</a> (T *x, VAT... vax)</td></tr>
 <tr class="separator:a1c1185a40d13a279d833fed35006ef97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6458e18330885faa73d37425713763b9"><td class="memTemplParams" colspan="2">template&lt;typename T , typename... VAT&gt; </td></tr>
+<tr class="memitem:a6458e18330885faa73d37425713763b9"><td class="memTemplItemLeft" align="right" valign="top">static size_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacearraytools.html#a6458e18330885faa73d37425713763b9">lenprod</a> (T x, VAT... vax)</td></tr>
+<tr class="separator:a6458e18330885faa73d37425713763b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa4c8d0c3c07467b08649067082755439"><td class="memTemplParams" colspan="2">template&lt;typename TA , typename TB &gt; </td></tr>
 <tr class="memitem:aa4c8d0c3c07467b08649067082755439"><td class="memTemplItemLeft" align="right" valign="top">static size_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacearraytools.html#aa4c8d0c3c07467b08649067082755439">cmp_firstmiss</a> (const size_t len, const TA *a, const TB *b)</td></tr>
 <tr class="separator:aa4c8d0c3c07467b08649067082755439"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -207,7 +211,7 @@ template&lt;typename T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Allocate an array. Wrapper around malloc().</p>
+<p>Allocate an array. Wrapper around <code>std::malloc()</code>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">len</td><td>Number of elements (not the number of bytes!). </td></tr>
@@ -253,7 +257,7 @@ template&lt;typename T , typename... VAT&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Check variable number of arrays. If one is NULL, then all others will be automatically freed and std::bad_alloc() will be thrown.</p>
+<p>Check variable number of arrays. If one is <code>NULL</code>, then all others will be automatically freed and <code>std::bad_alloc()</code> will be thrown.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>Array. </td></tr>
@@ -358,7 +362,7 @@ template&lt;typename TA , typename TB &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Do the two arrays contain the same elements (up to a cast)? Not suitable for floats.</p>
+<p>Do the two arrays contain the same elements (up to a cast)?</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">len</td><td>Number of elements (not the number of bytes!). </td></tr>
@@ -411,7 +415,7 @@ template&lt;typename T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Copy one array onto another. Array types can differ. If they are the same, it reduces to a memcpy() call.</p>
+<p>Copy one array onto another. Array types can differ. If they are the same, it reduces to a <code>std::memcpy()</code> call.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">len</td><td>Number of elements (not the number of bytes!). </td></tr>
@@ -448,7 +452,7 @@ template&lt;typename T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Free an array if supplied pointer is not NULL. Wrapper around <a class="el" href="namespacearraytools.html#af22678545dbcb05dfa0dae6efb03b6e7">free()</a>.</p>
+<p>Free an array if supplied pointer is not NULL. Wrapper around <code>std::free()</code>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>Array to be allocated. </td></tr>
@@ -456,6 +460,58 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 
+</div>
+</div>
+<a id="a6458e18330885faa73d37425713763b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6458e18330885faa73d37425713763b9">&#9670;&nbsp;</a></span>lenprod()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , typename... VAT&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static size_t arraytools::lenprod </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">VAT...&#160;</td>
+          <td class="paramname"><em>vax</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns a product of lengths. Input types can be any integral type. Return is always a <code>size_t</code>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>A length. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">vax</td><td>Optional additional length.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The product of the inputs as a <code>size_t</code>.</dd></dl>
+<div class="fragment"><div class="line"><span class="keywordtype">float</span> *x;</div>
+<div class="line"><span class="keywordtype">int</span> nrows = 5;</div>
+<div class="line"><span class="keywordtype">int</span> ncols = 3;</div>
+<div class="line"><span class="keywordtype">size_t</span> xlen = <a class="code" href="namespacearraytools.html#a6458e18330885faa73d37425713763b9">arraytools::lenprod</a>(nrows, ncols, <span class="keyword">sizeof</span>(*x));</div>
+<div class="line"><a class="code" href="namespacearraytools.html#aa66da9c39601ff58c1380b325fd1b7de">arraytools::alloc</a>(xlen, &amp;x);</div>
+</div><!-- fragment --> 
 </div>
 </div>
 <a id="a6c7af39d39210eec8df7e40a51c784df"></a>
@@ -493,11 +549,64 @@ template&lt;typename T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Re-allocate an array. Wrapper around <a class="el" href="namespacearraytools.html#a6c7af39d39210eec8df7e40a51c784df">realloc()</a>. If the realloc fails, the array will be set to NULL.</p>
+<p>Re-allocate an array. Wrapper around <code>std::realloc()</code>. If the realloc fails, the array will be set to <code>NULL</code>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">len</td><td>Number of elements (not the number of bytes!). </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">x</td><td>Array to be re-allocated. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a28459fdec2ddfe08bc1d8b884142bc63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28459fdec2ddfe08bc1d8b884142bc63">&#9670;&nbsp;</a></span>set()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename VALT , typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void arraytools::set </td>
+          <td>(</td>
+          <td class="paramtype">const VALT&#160;</td>
+          <td class="paramname"><em>val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>len</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T *&#160;</td>
+          <td class="paramname"><em>x</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Set an array's values to the specified value. If <code>val</code> is 0, this automatically calls <code>std::memset()</code>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">val</td><td>The value to set all elements of the array to. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">len</td><td>Number of elements (not the number of bytes!). </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">x</td><td>Array to be zeroed. </td></tr>
   </table>
   </dd>
 </dl>
@@ -539,7 +648,7 @@ template&lt;typename T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Set an array's values to 0. Wrapper around memset().</p>
+<p>Set an array's values to 0. Wrapper around <code>std::memset()</code>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">len</td><td>Number of elements (not the number of bytes!). </td></tr>
@@ -550,54 +659,10 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a id="a99e57aa59763cbabc8f8c682d12beeda"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a99e57aa59763cbabc8f8c682d12beeda">&#9670;&nbsp;</a></span>zero_alloc()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void arraytools::zero_alloc </td>
-          <td>(</td>
-          <td class="paramtype">const size_t&#160;</td>
-          <td class="paramname"><em>len</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">T **&#160;</td>
-          <td class="paramname"><em>x</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Zero-allocate an array. Wrapper around calloc.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">len</td><td>Number of elements (not the number of bytes!). </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">x</td><td>Array to be allocated. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="anamespacearraytools_html_aa66da9c39601ff58c1380b325fd1b7de"><div class="ttname"><a href="namespacearraytools.html#aa66da9c39601ff58c1380b325fd1b7de">arraytools::alloc</a></div><div class="ttdeci">static void alloc(const size_t len, T **x)</div><div class="ttdef"><b>Definition:</b> arraytools.hpp:32</div></div>
+<div class="ttc" id="anamespacearraytools_html_a6458e18330885faa73d37425713763b9"><div class="ttname"><a href="namespacearraytools.html#a6458e18330885faa73d37425713763b9">arraytools::lenprod</a></div><div class="ttdeci">static size_t lenprod(T x, VAT... vax)</div><div class="ttdef"><b>Definition:</b> arraytools.hpp:341</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
