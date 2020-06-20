@@ -1,10 +1,10 @@
 # NEWS
 
-## Release 0.2-0 (//):
+## Release 0.2-0 (6/20/2020):
 
 New:
   * Added to arraytools namespace
-      - aligned_alloc()
+      - aligned_alloc() (if C++ standard >= C++17)
       - set()
       - lenprod()
 
